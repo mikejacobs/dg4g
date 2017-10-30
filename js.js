@@ -2,7 +2,7 @@
 // Sorting by location, type, and role
 
 var xmlURL = "https://groups.google.com/forum/feed/design-gigs-for-good/topics/rss.xml?num=30"
-var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + xmlURL + '"') + '&format=xml&callback=?';
+var yql = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + xmlURL + '"') + '&format=xml&callback=?';
 $.getJSON(yql, xmlParser);
 
 function xmlParser(xml) {
