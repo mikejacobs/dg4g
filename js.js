@@ -1,7 +1,7 @@
 // TODO!
 // Sorting by location, type, and role
 
-var xmlURL = "https://groups.google.com/forum/feed/design-gigs-for-good/topics/rss.xml?num=30"
+var xmlURL = "https://groups.google.com/forum/feed/design-gigs-for-good/topics/rss.xml?num=50"
 var yql = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + xmlURL + '"') + '&format=xml&callback=?';
 $.getJSON(yql, xmlParser);
 
@@ -16,6 +16,7 @@ function xmlParser(xml) {
 	$items.each(function(item){
 
 		var $item = $($items[item])
+		console.log($item)
 		var parsedTitle = parseMetaData($item.find("title").text())
 		var parsedDesc = parseLinkFromDescription($item.find("description").text())
 		var $list_item = $("<div class='item'></div>")
@@ -23,7 +24,7 @@ function xmlParser(xml) {
 		$list_item.append($('<a href="#" class="meta">' + parsedTitle.type + '</a> &middot; ' + '<a href="#" class="meta">' + parsedTitle.location + '</a> '))
 		$list_item.append($('<span class="date">'+ formatDate($item.find("pubDate").text()) +'</span>'))
 		$list_item.append($('<a href="'+ ( parsedDesc.link || $item.find("link").text() )+'" class="title">'+parsedTitle.text+'</a>'))
-		$list_item.append($('<p>' + parsedDesc.text + '...</p>'))
+		$list_item.append($('<p>' + parsedDesc.text + '... <a class="more" href='+$item.find("link").text()+'>original post</a></p>'))
 
 		$list.append($list_item)
 	})
