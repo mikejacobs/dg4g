@@ -21,7 +21,7 @@ function xmlParser(xml) {
 		var parsedDesc = parseLinkFromDescription($item.find("description").text())
 		var $list_item = $("<div class='item'></div>")
 
-		$list_item.append($('<a href="#" class="meta">' + parsedTitle.type + '</a> &middot; ' + '<a href="#" class="meta">' + parsedTitle.location + '</a> '))
+		$list_item.append($('<span class="meta">' + parsedTitle.type + '</span> &middot; ' + '<span class="meta">' + parsedTitle.location + '</span> '))
 		$list_item.append($('<span class="date">'+ formatDate($item.find("pubDate").text()) +'</span>'))
 		$list_item.append($('<a href="'+ ( parsedDesc.link || $item.find("link").text() )+'" class="title">'+parsedTitle.text+'</a>'))
 		$list_item.append($('<p>' + parsedDesc.text + '... <a class="more" href='+$item.find("link").text()+'>original post</a></p>'))

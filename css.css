@@ -23,7 +23,7 @@ h1{
 .item {
 	margin-bottom: 22px;
 }
-.item a.meta{
+.meta{
 	display: inline-block;
 	font-size:12px;
 	color:lightslategray;
